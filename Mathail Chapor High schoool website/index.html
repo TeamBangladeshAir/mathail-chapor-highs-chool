@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>মাথাইল চাপড় আদর্শ বহুমুখী উচ্চ বিদ্যালয়</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- বেসিক রিসেট --- */
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Hind Siliguri', sans-serif; }
+        body { background-color: #f4f4f4; color: #333; }
+
+        /* --- হেডার সেকশন --- */
+        header { background-color: #fff; padding: 20px 0; border-bottom: 5px solid #2ecc71; text-align: center; }
+        .header-container { width: 90%; margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 20px; }
+        
+        .logo-placeholder {
+            width: 80px; height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; border: 2px solid #006a4e;
+        }
+        .logo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+
+        .school-name h1 { color: #006a4e; font-size: 2.2rem; font-weight: 700; margin-bottom: 5px; }
+        
+        /* --- নতুন ফন্ট স্টাইল (Tiro Bangla) --- */
+        .school-name p {
+            font-family: 'Tiro Bangla', serif;
+            color: #b71c1c; /* গাঢ় লাল */
+            font-size: 1.1rem;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+            background-color: #fff5f5; /* খুব হালকা লাল ব্যাকগ্রাউন্ড */
+            display: inline-block;
+            padding: 3px 15px;
+            border-radius: 20px;
+            border: 1px solid #ffcdd2;
+        }
+
+        /* --- নেভিগেশন বার --- */
+        nav { background-color: #006a4e; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        nav ul { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; }
+        nav ul li a { display: block; padding: 15px 20px; color: white; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        nav ul li a:hover { background-color: #004d38; border-bottom: 3px solid #f42a41; }
+
+        /* --- মেইন কন্টেইনার --- */
+        .container { width: 90%; max-width: 1200px; margin: 20px auto; display: grid; grid-template-columns: 3fr 1fr; gap: 20px; }
+
+        /* --- ব্যানার ও নোটিশ --- */
+        .notice-bar {
+            grid-column: 1 / -1; background-color: #fff; padding: 10px;
+            border: 1px solid #ddd; border-radius: 5px; display: flex; align-items: center; margin-bottom: 20px;
+        }
+        .notice-title { background: #f42a41; color: white; padding: 5px 15px; font-weight: bold; margin-right: 10px; border-radius: 3px; white-space: nowrap; }
+
+        .hero-banner {
+            grid-column: 1 / -1;
+            /* ব্যানার ছবি */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/banner.jpg');
+            background-size: cover; background-position: center;
+            height: 350px; display: flex; align-items: center; justify-content: center;
+            color: white; border-radius: 8px; text-align: center; margin-bottom: 20px;
+        }
+        .hero-text h2 { font-size: 2.5rem; text-shadow: 2px 2px 4px #000; background: rgba(0,0,0,0.5); padding: 10px 20px; border-radius: 10px; }
+
+        /* --- মেইন কন্টেন্ট --- */
+        .main-content { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .section-title { border-bottom: 2px solid #006a4e; padding-bottom: 10px; margin-bottom: 20px; color: #006a4e; margin-top: 30px; scroll-margin-top: 100px; }
+        .section-title:first-child { margin-top: 0; }
+        
+        .welcome-msg { display: flex; gap: 20px; align-items: flex-start; }
+        .headmaster-img { width: 150px; height: 180px; background-color: #ddd; object-fit: cover; border: 4px solid #f4f4f4; box-shadow: 0 0 5px rgba(0,0,0,0.2); }
+
+        /* --- টিচার্স গ্রিড --- */
+        .teachers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin-top: 20px; }
+        .teacher-card { background: #f9f9f9; border: 1px solid #eee; border-radius: 8px; padding: 15px; text-align: center; transition: 0.3s; }
+        .teacher-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); transform: translateY(-5px); background: white; }
+        .t-photo { width: 100px; height: 100px; background: #ddd; border-radius: 50%; margin: 0 auto 10px; border: 3px solid #006a4e; overflow: hidden; }
+        .t-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .t-name { font-size: 1rem; font-weight: 700; color: #2c3e50; margin-bottom: 5px; }
+        .t-desig { font-size: 0.85rem; color: #7f8c8d; font-weight: 600; }
+
+        /* --- সাইডবার ও ফুটার --- */
+        .sidebar { display: flex; flex-direction: column; gap: 20px; }
+        .sidebar-widget { background: white; padding: 15px; border-radius: 8px; border-top: 4px solid #f42a41; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .sidebar-widget h3 { margin-bottom: 15px; font-size: 1.2rem; color: #333; }
+        .links-list li { list-style: none; border-bottom: 1px solid #eee; padding: 8px 0; }
+        .links-list li a { text-decoration: none; color: #555; transition: 0.2s; }
+        .links-list li a:hover { color: #006a4e; padding-left: 5px; }
+        footer { background-color: #2c3e50; color: white; padding: 40px 0; margin-top: 40px; text-align: center; }
+        .footer-content p { margin: 5px 0; color: #bdc3c7; }
+
+        /* --- রেসপন্সিভ --- */
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .header-container, .welcome-msg, nav ul { flex-direction: column; text-align: center; align-items: center; }
+            .hero-banner { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo-placeholder">
+                <img src="images/logo.jpg" alt="Logo">
+            </div>
+            <div class="school-name">
+                <h1>মাথাইল চাপড় আদর্শ বহুমুখী উচ্চ বিদ্যালয়</h1>
+                <p>স্থাপিত: ১৯৯৮ খ্রিঃ | EIIN: ১২৮১৬৪</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">প্রথম পাতা</a></li>
+            <li><a href="#">আমাদের কথা</a></li>
+            <li><a href="#">প্রশাসনিক তথ্য</a></li>
+            <li><a href="#teachers">শিক্ষক ও কর্মচারী</a></li>
+            <li><a href="#">ছাত্র-ছাত্রী</a></li>
+            <li><a href="#">ফলাফল</a></li>
+            <li><a href="#">গ্যালারি</a></li>
+            <li><a href="#">যোগাযোগ</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <div class="notice-bar">
+            <span class="notice-title">নোটিশ:</span>
+            <marquee onmouseover="this.stop();" onmouseout="this.start();">
+                📢 ২০২৬ শিক্ষাবর্ষে ৬ষ্ঠ, ৮ম ও ৯ম শ্রেণিতে ভর্তি চলছে। আগ্রহী অভিভাবকগণকে অতিসত্বর যোগাযোগ করার জন্য অনুরোধ করা হলো। *** বার্ষিক ক্রীড়া প্রতিযোগিতা আগামী ১৫ই জানুয়ারি।
+            </marquee>
+        </div>
+
+        <div class="hero-banner">
+            <div class="hero-text">
+                <h2>স্বাগতম আমাদের বিদ্যালয়ে</h2>
+                <p>সুশিক্ষাই জাতির মেরুদণ্ড</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h2 class="section-title">প্রধান শিক্ষকের বাণী</h2>
+            <div class="welcome-msg">
+                <img src="images/Md Fozlul Haque.jpg" alt="Headmaster" class="headmaster-img">
+                <div>
+                    <p>
+                        বিসমিল্লাহির রাহমানির রাহিম।<br><br>
+                        মাথাইল চাপড় আদর্শ বহুমুখী উচ্চ বিদ্যালয়ের অফিসিয়াল ওয়েবসাইটে আপনাদের স্বাগতম। আধুনিক তথ্যপ্রযুক্তির যুগে আমাদের বিদ্যালয়কে ডিজিটাল রূপান্তরের পথে এগিয়ে নেওয়া আমাদের লক্ষ্য।
+                        <br><br>
+                        ধন্যবাদান্তে,<br>
+                        <strong>Md Fozlul Haque</strong><br>
+                        প্রধান শিক্ষক
+                    </p>
+                </div>
+            </div>
+
+            <br>
+            <h2 class="section-title">সর্বশেষ সংবাদ</h2>
+            <ul>
+                <li>✅ ২০২৬ সালের নতুন ভর্তি কার্যক্রম শুরু হয়েছে।</li>
+                <li>✅ আগামী রবিবার বিদ্যালয় বন্ধ থাকবে।</li>
+                <li>✅ বিজ্ঞান মেলার পুরষ্কার বিতরণী অনুষ্ঠান সম্পন্ন।</li>
+            </ul>
+
+            <br>
+            <h2 id="teachers" class="section-title">আমাদের সম্মানীয় শিক্ষক ও কর্মচারী</h2>
+            
+            <div class="teachers-grid">
+                <div class="teacher-card" style="border-color: #006a4e; background: #e8f8f5;">
+                    <div class="t-photo"><img src="images/Md Fozlul Haque.jpg" alt="Md Fozlul Haque"></div>
+                    <div class="t-name">Md Fozlul Haque</div>
+                    <div class="t-desig">Head Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/MD Bablu Mia.jpg" alt="MD Bablu Mia"></div>
+                    <div class="t-name">MD Bablu Mia</div>
+                    <div class="t-desig">Assistant Teacher (Social Science)</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Md Abdul Kuddus.jpg" alt="Md Abdul Kuddus"></div>
+                    <div class="t-name">Md Abdul Kuddus</div>
+                    <div class="t-desig">Assistant Teacher (Religion)</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Md Zel Hossain.jpg" alt="Md Zel Hossain"></div>
+                    <div class="t-name">Md Zel Hossain</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Md Mothahar.jpg" alt="Md Mothahar"></div>
+                    <div class="t-name">Md Mothahar</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/MD Abdul Mannan.jpg" alt="MD Abdul Mannan"></div>
+                    <div class="t-name">MD Abdul Mannan</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Md Aminul Islam.jpg" alt="Md Aminul Islam"></div>
+                    <div class="t-name">Md Aminul Islam</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/MD. Lutfor Rahman.jpg" alt="MD. Lutfor Rahman"></div>
+                    <div class="t-name">MD. Lutfor Rahman</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Mst Zulakha Akter.jpg" alt="Mst Zulakha Akter"></div>
+                    <div class="t-name">Mst Zulakha Akter</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Mst Sahana Shajahan.jpg" alt="Mst Sahana Shajahan"></div>
+                    <div class="t-name">Mst Sahana Shajahan</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Mst Rekha Khatun.jpg" alt="Mst Rekha Khatun"></div>
+                    <div class="t-name">Mst Rekha Khatun</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Md Rokonuzzaman.jpg" alt="Md Rokonuzzaman"></div>
+                    <div class="t-name">Md Rokonuzzaman</div>
+                    <div class="t-desig">Assistant Teacher</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Md Zohurul Islam.jpg" alt="Md Zohurul Islam"></div>
+                    <div class="t-name">Md Zohurul Islam</div>
+                    <div class="t-desig">Computer Operator</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Md Babul Akter.jpg" alt="Md Babul Akter"></div>
+                    <div class="t-name">Md Babul Akter</div>
+                    <div class="t-desig">Office Assistant</div>
+                </div>
+
+                <div class="teacher-card">
+                    <div class="t-photo"><img src="images/Md Hasan Mia.jpg" alt="Md Hasan Mia"></div>
+                    <div class="t-name">Md Hasan Mia</div>
+                    <div class="t-desig">Night Guard</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sidebar-widget">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <ul class="links-list">
+                    <li><a href="#">📎 শিক্ষা মন্ত্রণালয়</a></li>
+                    <li><a href="#">📎 ঢাকা শিক্ষা বোর্ড</a></li>
+                    <li><a href="#">📎 শিক্ষক বাতায়ন</a></li>
+                    <li><a href="#">📎 মাধ্যমিক ও উচ্চশিক্ষা অধিদপ্তর</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>এক নজরে তথ্য</h3>
+                <ul class="links-list">
+                    <li>👨‍🏫 শিক্ষক ও স্টাফ: ১৫ জন</li>
+                    <li>👩‍🎓 ছাত্র-ছাত্রী: ১২০০+ জন</li>
+                    <li>🏫 শ্রেণিকক্ষ: ১৫ টি</li>
+                    <li>💻 ল্যাব: ০২ টি</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>লগইন</h3>
+                <form style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="text" placeholder="ইউজার নেম" style="padding: 8px; border: 1px solid #ccc; border-radius:4px;">
+                    <input type="password" placeholder="পাসওয়ার্ড" style="padding: 8px; border: 1px solid #ccc; border-radius:4px;">
+                    <button style="padding: 8px; background: #006a4e; color: white; border: none; cursor: pointer; border-radius:4px;">লগইন করুন</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <h3>মাথাইল চাপড় আদর্শ বহুমুখী উচ্চ বিদ্যালয়</h3>
+            <p>ঠিকানা: মাথাইল চাপড়, সিরাজগঞ্জ, বাংলাদেশ।</p>
+            <p>ইমেইল: mathailchaporhighschool@gmai.com | ফোন: 01710794238</p>
+            <p style="margin-top: 20px; font-size: 0.9rem;">&copy; ২০২৫ সর্বস্বত্ব সংরক্ষিত। কারিগরি সহযোগিতায়: আইসিটি বিভাগ।</p>
+        </div>
+    </footer>
+
+</body>
+</html>
